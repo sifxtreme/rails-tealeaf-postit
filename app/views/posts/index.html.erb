@@ -2,14 +2,10 @@
 
 <p>This is the Postit template. You've access the PostsController, index action. This is the index template. Find me under app/views/posts folder.</p>
 
-
+<ul>
 <% @posts.each do |post| %>
-	<p>
-	<span>Categories:</span>
-	<% post.categories.each do |category| %>
-		<%= category.name %>
-	<% end %>
-	</p>
-	<%= link_to post.title, post_path(post) %>
-	<%= post.inspect %>
+	<li><%= link_to post.title, post_path(post) %> (<%= link_to 'edit', edit_post_path(post) %>)</li>
 <% end %>
+</ul>
+
+<%= link_to 'New Post', new_post_path %>
