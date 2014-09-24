@@ -6,6 +6,8 @@
 
 <p>AUTHOR: <%= @post.creator.username %></p>
 
+<p>CATEGORIES: <%= categorize_string(@post.categories) %></p>
+
 <h3>Comments</h3>
 <div class="comments">
 <% @post.comments.each do |comment| %>

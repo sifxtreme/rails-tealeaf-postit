@@ -1,1 +1,7 @@
 <%= render 'partials/title', title: @category.name %>
+
+  <div>
+    <% @category.posts.each do |post| %>
+    <div><%= post.title %><%= link_to '(url)', post_path(post) %></div>
+   <% end %>
+  </div>

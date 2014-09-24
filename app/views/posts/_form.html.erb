@@ -18,6 +18,13 @@
   </div>
 
   <div>
+    <%= f.label "Categories" %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |c| %>
+      <%= c.label() {c.check_box() + c.text} %>
+    <% end %>
+  </div>
+
+  <div>
     <%= f.submit %>
   </div>
 
