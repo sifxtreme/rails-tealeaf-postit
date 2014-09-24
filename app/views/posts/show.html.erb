@@ -1,5 +1,30 @@
 <%= render 'partials/title', title: @post.title %>
 
-<!-- <h2><%= @post.title %></h2> -->
-<p><%= @post.url %></p>
-<p><%= @post.description %></p>
+
+<p>URL: <%= @post.url %></p>
+<p>DESCRIPTION: <%= @post.description %></p>
+
+<p>AUTHOR: <%= @post.creator.username %></p>
+
+<h3>Comments</h3>
+<div class="comments">
+<% @post.comments.each do |comment| %>
+<div class="well">Comment: <%= comment.body %>: <%= comment.created_at %></div>
+<% end %>
+</div>
+
+
+<%= form_for [@post, @comment] do |f| %>
+  
+  <%= render 'partials/errors', o: @comment %>
+  
+  <div class='control-group'>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit 'create comment' %>
+  </div>
+
+<% end %>
