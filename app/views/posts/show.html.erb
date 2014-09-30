@@ -11,22 +11,23 @@
 <h3>Comments</h3>
 <div class="comments">
 <% @post.comments.each do |comment| %>
-<div class="well">Comment: <%= comment.body %>: <%= comment.created_at %></div>
+<div class="well">Comment: <%= comment.body %>: <%= display_datetime(comment.created_at) %></div>
 <% end %>
 </div>
 
+<% if logged_in? %>
+	<%= form_for [@post, @comment] do |f| %>
+	  
+	  <%= render 'partials/errors', o: @comment %>
+	  
+	  <div class='control-group'>
+	    <%= f.label :body %>
+	    <%= f.text_area :body %>
+	  </div>
 
-<%= form_for [@post, @comment] do |f| %>
-  
-  <%= render 'partials/errors', o: @comment %>
-  
-  <div class='control-group'>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
+	  <div>
+	    <%= f.submit 'create comment' %>
+	  </div>
 
-  <div>
-    <%= f.submit 'create comment' %>
-  </div>
-
+	<% end %>
 <% end %>
