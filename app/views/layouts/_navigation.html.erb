@@ -18,6 +18,9 @@
       <%= link_to 'new category', new_category_path %>
     </li>
     <li>
+      <%= link_to current_user.username, profile_path %>
+    </li>
+    <li>
       <%= link_to 'logout', logout_path %>
     </li>
   <% else %>

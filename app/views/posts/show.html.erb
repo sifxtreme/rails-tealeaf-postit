@@ -11,6 +11,21 @@
 <h3>Comments</h3>
 <div class="comments">
 <% @post.comments.each do |comment| %>
+
+		<% if logged_in? %>
+			<%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post' do %>
+				<i class="icon-arrow-up"></i>
+			<% end %>
+		<% end %>
+		
+		<%= comment.total_votes %> votes
+
+		<% if logged_in? %>
+			<%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post' do %>
+				<i class="icon-arrow-down"></i>
+			<% end %>
+		<% end %>
+		
 <div class="well">Comment: <%= comment.body %>: <%= display_datetime(comment.created_at) %></div>
 <% end %>
 </div>
