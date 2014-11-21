@@ -9,11 +9,23 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new()
+    # puts Post.my_class_method
+    @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @post
+      end
+      format.xml do
+        render xml: @post
+      end
+      # format.xml { render xml: @post}
+    end
   end
 
   def new
-  	@post = Post.new()
+  	@post = Post.new
   end
 
   def create
@@ -55,10 +67,7 @@ class PostsController < ApplicationController
 
         redirect_to :back
       }
-      format.js {
-        
-      }
-
+      format.js
     end
 
     

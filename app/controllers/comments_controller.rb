@@ -27,8 +27,8 @@ class CommentsController < ApplicationController
       flash[:notice] = "Your vote was counted"
     else
       # flash[:error] = "Your vote was not counted"
-      # flash[:error] = @vote.errors.inspect
-      flash[:error] = "You can only vote for <strong>that</strong> once".html_safe
+      flash[:error] = @vote.errors.inspect
+      # flash[:error] = "You can only vote for <strong>that</strong> once".html_safe
     end
 
     redirect_to :back
