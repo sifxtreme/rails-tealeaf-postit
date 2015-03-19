@@ -19,13 +19,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'sqlite3'
+
 group :development do
   gem 'quiet_assets'
   gem 'pry'
-  gem 'sqlite3'
+  
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
